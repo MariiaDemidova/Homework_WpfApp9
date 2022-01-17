@@ -1,0 +1,64 @@
+﻿<Window x:Class="Homework_WpfApp9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework_WpfApp9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Style="{DynamicResource WindowStyle}">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OpenExecuted"/>
+        <CommandBinding Command="Save" Executed="SaveExecuted"/>
+        <CommandBinding Command="Close" Executed="CloseExecuted"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="styleBox"/>
+        <Menu Grid.Row="1" Style="{DynamicResource AllSettingsStyle}">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Style="{DynamicResource WithoutMarginStyle}" Command="Open"/>
+                <MenuItem Header="Сохранить" Style="{DynamicResource WithoutMarginStyle}" Command="Save"/>
+                <Separator/>
+                <MenuItem Header="Выход" Style="{DynamicResource WithoutMarginStyle}" Command="Close"/>
+            </MenuItem>
+            <MenuItem Header="Правка" >
+                <MenuItem Header="Копировать" Style="{DynamicResource WithoutMarginStyle}" Command="Copy"/>
+                <MenuItem Header="Вырезать" Style="{DynamicResource WithoutMarginStyle}" Command="Cut"/>
+                <MenuItem Header="Вставить" Style="{DynamicResource WithoutMarginStyle}" Command="Paste"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="2">
+            <ToolBar Style="{DynamicResource AllSettingsStyle}">
+                <ComboBox Style="{DynamicResource AllSettingsStyle}" SelectedIndex="0" Width="200" ItemsSource="{StaticResource fontStyles}" SelectionChanged="ComboBox_SelectionChanged">
+                </ComboBox>
+                <ComboBox Style="{DynamicResource AllSettingsStyle}" SelectedIndex="0" Width="50" ItemsSource="{StaticResource fontSizes}" SelectionChanged="ComboBox_SelectionChanged_1">
+                </ComboBox>
+            </ToolBar>
+            <ToolBar Style="{DynamicResource AllSettingsStyle}">
+                <Button Style="{DynamicResource ButtonStyle}" Click="Button_Click">
+                    <Image Source="Data/bold.png"/>
+                </Button>
+                <Separator/>
+                <Button Style="{DynamicResource ButtonStyle}" Click="Button_Click_1">
+                    <Image Source="Data/italicnew.png"/>
+                </Button>
+                <Separator/>
+                <Button Style="{DynamicResource ButtonStyle}" Click="Button_Click_2">
+                    <Image Source="Data/underlinenew.png"/>
+                </Button>
+            </ToolBar>
+            <ToolBar Style="{DynamicResource AllSettingsStyle}">
+                <StackPanel Style="{DynamicResource StackPanelStyle}">
+                    <RadioButton Style="{DynamicResource BlackRButtonStyle}" IsChecked="True" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Style="{DynamicResource AllSettingsStyle}" Content="Красный" Checked="RadioButton_Checked"/>
+                </StackPanel>
+            </ToolBar>
+        </ToolBarTray>
+        <TextBox x:Name="textBox" Grid.Row="3" Style="{DynamicResource TextBoxStyle}"/>
+    </Grid>
+</Window>
